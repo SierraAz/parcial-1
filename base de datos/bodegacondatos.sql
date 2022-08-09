@@ -83,7 +83,7 @@ CREATE TABLE `pedidos` (
   KEY `idmembresia_idx` (`idmembresia`),
   CONSTRAINT `idmembresia` FOREIGN KEY (`idmembresia`) REFERENCES `clientes` (`idmembresia`),
   CONSTRAINT `idtipopedidos` FOREIGN KEY (`idtipopedidos`) REFERENCES `tipopedidos` (`idtipopedidos`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,6 +92,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
+INSERT INTO `pedidos` VALUES (1,1,997,'2022-08-09'),(2,2,995,'2022-08-09');
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,6 +118,7 @@ CREATE TABLE `tipopedidos` (
 
 LOCK TABLES `tipopedidos` WRITE;
 /*!40000 ALTER TABLE `tipopedidos` DISABLE KEYS */;
+INSERT INTO `tipopedidos` VALUES (995,'Jardineria nivel 4','6000','Marlon Juarez'),(996,'Vagon nivel 3','4000','Raul Sanchez'),(997,'Encargo nivel 5','5000','Emanuel Ramoz');
 /*!40000 ALTER TABLE `tipopedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,10 +159,10 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `agregar_peli`(in cod int, in tipo varchar(45), in precioo varchar(45), in trabajador float)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `agregar_peli`(in cod int, in tipo varchar(45), in precioo varchar(45), in trabajador varchar(45))
 BEGIN
 
-insert into pelis (idtipopedidos,tipopedido,precio,trabajador_encargado)
+insert into tipopedidos (idtipopedidos,tipopedido,precio,trabajador_encargado)
 values(cod,tipo,precioo,trabajador);
 
 END ;;
@@ -199,4 +201,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-09 12:26:48
+-- Dump completed on 2022-08-09 13:02:31
